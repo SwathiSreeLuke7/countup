@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Countup Timer</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Your+Custom+Font&display=swap');
+
+        #timer {
+            font-family: 'Product sans', product sans;
+            font-size: 48px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Spreading the light since</h1>
+    <div id="timer">00:00:00</div>
+
+    <script>
+        function padZero(num) {
+            return (num < 10 ? '0' : '') + num;
+        }
+
+        function updateTimer() {
+            var start = new Date('2023-01-01 00:00:00'); // Set the start date and time here
+            var now = new Date();
+            var elapsedTime = now - start;
+
+            var hours = Math.floor(elapsedTime / (60 * 60 * 1000));
+            elapsedTime -= hours * (60 * 60 * 1000);
+
+            var minutes = Math.floor(elapsedTime / (60 * 1000));
+            elapsedTime -= minutes * (60 * 1000);
+
+            var seconds = Math.floor(elapsedTime / 1000);
+
+            var timerElement = document.getElementById('timer');
+            timerElement.textContent = padZero(hours) + ':' + padZero(minutes) + ':' + padZero(seconds);
+        }
+
+        // Update the timer every second
+        setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
